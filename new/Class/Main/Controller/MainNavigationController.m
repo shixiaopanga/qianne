@@ -1,29 +1,30 @@
 //
-//  ViewController.m
+//  MainNavigationController.m
 //  new
 //
-//  Created by lzd on 2017/3/21.
+//  Created by lzd on 2017/3/25.
 //  Copyright © 2017年 lzd. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainNavigationController.h"
 
-@interface ViewController ()
+@interface MainNavigationController ()
 
 @end
 
-@implementation ViewController
+@implementation MainNavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+//    self.navigationBar.translucent = NO;
+    
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 @end

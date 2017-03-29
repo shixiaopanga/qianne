@@ -45,9 +45,10 @@ static NSString * const SlumpCollectionIndentifier = @"SlumpCollectionIndentifie
 -(UICollectionView *)collectionView {
     if (!_collectionView) {
         SlumpCollectionViewFlowLayout *layout = [[SlumpCollectionViewFlowLayout alloc]init:CGSizeMake(UI_SCREEN_WIDTH, UI_SCREEN_HEIGHT-113)];
-        CGRect frame = CGRectMake(0, 0, UI_SCREEN_WIDTH, UI_SCREEN_HEIGHT);
+        CGRect frame = CGRectMake(0, 0, UI_SCREEN_WIDTH+5, UI_SCREEN_HEIGHT);
         _collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.pagingEnabled = YES;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         
@@ -75,22 +76,22 @@ static NSString * const SlumpCollectionIndentifier = @"SlumpCollectionIndentifie
 }
 #pragma mark - <UIScrollViewDelegate>
 
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-
-    *targetContentOffset = scrollView.contentOffset;
-    float pageWidth = (float)_collectionView.bounds.size.width;
-    int minSpace = 5;
-    
-    int cellToSwipe = (scrollView.contentOffset.x)/(pageWidth + minSpace) + 0.5;
-    if (cellToSwipe < 0) {
-        cellToSwipe = 0;
-    } else if (cellToSwipe >= _childViewControllerArray.count) {
-        cellToSwipe = _childViewControllerArray.count - 1.0;
-    }
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:cellToSwipe inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-    [_titleSlumpBar setTitleBtnIndex:cellToSwipe];
-
-}
+//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+//
+//    *targetContentOffset = scrollView.contentOffset;
+//    float pageWidth = (float)_collectionView.bounds.size.width;
+//    int minSpace = 5;
+//    
+//    int cellToSwipe = (scrollView.contentOffset.x)/(pageWidth + minSpace) + 0.5;
+//    if (cellToSwipe < 0) {
+//        cellToSwipe = 0;
+//    } else if (cellToSwipe >= _childViewControllerArray.count) {
+//        cellToSwipe = _childViewControllerArray.count - 1.0;
+//    }
+//    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:cellToSwipe inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+//    [_titleSlumpBar setTitleBtnIndex:cellToSwipe];
+//
+//}
 
 #pragma mark - <UICollectionViewDataSource>
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

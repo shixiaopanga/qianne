@@ -21,15 +21,20 @@
         [header beginRefreshing];
         self.mj_header = header;
     }
-//    if (loadMoreAction) {
-//        
-//        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:target refreshingAction:loadMoreAction];
-//        footer.automaticallyChangeAlpha = YES;
-//        footer.automaticallyRefresh = NO;
-//        self.mj_footer = footer;
-//    }
 }
+- (void)addPushToRefreshTarget:(id)target loadMoreAction:(SEL _Nonnull)loadMoreAction {
 
+        if (loadMoreAction && !self.mj_footer) {
+    
+            MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:target refreshingAction:loadMoreAction];
+            footer.automaticallyChangeAlpha = YES;
+            footer.automaticallyRefresh = NO;
+            self.mj_footer = footer;
+        }
+}
+- (void)removePush {
+    self.mj_footer = nil ;
+}
 - (void)endRefreshing {
     [self.mj_header endRefreshing];
     [self.mj_footer endRefreshing];

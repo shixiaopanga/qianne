@@ -41,27 +41,15 @@
 
 - (void)updataForEssayModel:(WeChatEssayModel *)model reloadCompleted:(void(^)())completed{
     _writerName.text = [NSString stringWithFormat:@"%@·%@",model.weixinname,model.weixinaccount];
-    UIImage *img = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:model.pic];
-    if (img) {
-        _contentImage.image = img;
-//        CGFloat newScale = img.size.height / img.size.width;
-//        _contentImageHeight.constant = newScale * _contentImage.bounds.size.width;
-        
-    }else {
-        __weak __typeof(self)wself = self;
-        [_contentImage sd_setImageWithURL:[NSURL URLWithString:model.time] placeholderImage:[UIImage imageNamed:@"icon"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            if (image) {
-                dispatch_async(dispatch_get_main_queue(), ^ {
-                    //            wself.contentImage.image = image;
-                    //            CGFloat newScale = image.size.height / image.size.width;
-                    //            wself.contentImageHeight.constant = newScale * _contentImage.bounds.size.width;
-                    completed();
-                });
-            }
-            
-        }];
-    }
-    
+//    UIImage *img = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:model.pic];
+//    if (img) {
+//        _contentImage.image = img;
+//        [self updateConstraintsIfNeeded];
+//    }else {
+//        _contentImage.image = [UIImage imageNamed:@"placeholder_pic"];
+//        [self resizingDownLoadImage:model.pic reloadCompleted:completed];
+//    }
+    [_contentImage sd_setImageWithURL:[NSURL URLWithString:model.pic] placeholderImage:[UIImage imageNamed:@"placeholder_pic"]];
     _contentTitle.text = model.title;
     _content.text = model.content;
     _essayTime.text = model.time;
@@ -69,4 +57,27 @@
     [_readCount setTitle:model.readnum forState:UIControlStateNormal];
 }
 
+- (void)resizingDownLoadImage:(NSString *)imageURL reloadCompleted:(void(^)())completed{
+    __weak __typeof(self)weakSelf = self;
+    [[SDWebImageDownloader sharedDownloader]downloadImageWithURL:[NSURL URLWithString:imageURL] options:(SDWebImageDownloaderUseNSURLCache) progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if (image) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                CGFloat scale = strongSelf.contentImage.frame.size.width / image.size.width;
+                CGSize newSize = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(scale, scale));
+                
+                UIGraphicsBeginImageContextWithOptions(newSize, NO,1.00);
+                [image drawInRect:CGRectMake(0, 0, 375 , 290)];
+                UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+                [[SDImageCache sharedImageCache] storeImage:scaledImage forKey:imageURL toDisk:YES];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    strongSelf.contentImage.image = scaledImage;
+                    [strongSelf updateConstraintsIfNeeded];
+                });
+            });
+            
+        }
+    }];
+}
 @end

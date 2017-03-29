@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         self.itemSize = slimpItemSize;
+        self.sectionInset = UIEdgeInsetsMake(0, 0, 0, 5);
         self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         self.minimumLineSpacing = 5;
     }
@@ -24,7 +25,11 @@
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
     return YES;
 }
-
+-(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
+    NSLog(@"%f-------%f",proposedContentOffset.x,velocity.x);
+    
+    return proposedContentOffset;
+}
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSArray *AttributesArray = [[NSArray alloc]initWithArray:[super layoutAttributesForElementsInRect:rect] copyItems:YES];
     CGFloat centerX = self.collectionView.contentOffset.x + UI_SCREEN_WIDTH * 0.5;
@@ -34,7 +39,7 @@
             //边界值不需要交错效果
             continue;
         }
-        CGFloat distanceFromCenterScale = (attribute.center.x - centerX)/(2*UI_SCREEN_WIDTH + 10);
+        CGFloat distanceFromCenterScale = (attribute.center.x - centerX)/(2*UI_SCREEN_WIDTH+10);
         if (distanceFromCenterScale < -0.5) {
             distanceFromCenterScale = -0.5;
         }else if (distanceFromCenterScale > 0.5) {

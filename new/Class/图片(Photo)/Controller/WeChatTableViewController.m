@@ -10,11 +10,13 @@
 #import "WeChatTableViewCell.h"
 #import "UITableView+Refresh.h"
 #import "WeChatEssayList.h"
+#import "WeChatEssayModel.h"
+#import "GloablTransitionAnimation.h"
+#import "MineViewController.h"
 
-
-
-@interface WeChatTableViewController ()
-@property (nonatomic, copy) NSArray *weChatEssayList;
+@interface WeChatTableViewController ()<UIViewControllerTransitioningDelegate>
+@property (nonatomic, copy) NSMutableArray *weChatEssayList;
+@property (nonatomic, assign) NSInteger pageIndex;
 @end
 
 @implementation WeChatTableViewController
@@ -27,101 +29,112 @@ static NSString * const  cellIdentifier = @"WeChatTableViewCell";
 }
 - (void)setupTableView {
     self.navigationItem.title = @"微信精选文章";
+    
+    self.transitioningDelegate = self;
+    self.modalPresentationStyle = UIModalPresentationCustom;
+    
+    _weChatEssayList = [[NSMutableArray alloc]init];
+    
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView registerNib:[UINib nibWithNibName:@"WeChatTableViewCell" bundle:nil] forCellReuseIdentifier:@"WeChatTableViewCell"];
     self.tableView.backgroundColor = BackgroundColor;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = 400;
-    [self.tableView addPullToRefreshTarget:self refreshingAction:@selector(loadMoreData) loadMoreAction:@selector(loadmore)];
+    [self.tableView addPullToRefreshTarget:self refreshingAction:@selector(pullLoad) loadMoreAction:@selector(pushLoad)];
 }
-- (void) loadMoreData {
+- (void)pullLoad{
+    _pageIndex = 1;
+    [self loadMoreData];
+}
+-(void)pushLoad {
+    _pageIndex += 10;
+    [self loadMoreData];
+}
+- (void)loadMoreData {
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
-    params[@"channelid"] = [NSString stringWithFormat:@"%d",8];
-    params[@"start"] = [NSString stringWithFormat:@"%d",1];
-    params[@"num"] = [NSString stringWithFormat:@"%d",10];
+    params[@"channelid"] = [NSString stringWithFormat:@"%d",1];
+    params[@"start"] = [NSString stringWithFormat:@"%ld",_pageIndex];
     params[@"appkey"] = @"80b2ac506f71f10a";
+    
     __weak __typeof(self)wself = self;
-    [XPAPI getWeChatEssayWithParameters:params needCache:YES succeed:^(BOOL needCache,XPResponseModel *model){
+    [XPAPI getWeChatEssayWithParameters:params needCache:YES succeed:^(BOOL fromCache,XPResponseModel *model){
     NSError *erroe;
-        wself.weChatEssayList = [[WeChatEssayList alloc]initWithDictionary:model.result error:&erroe].list;
+        if (!fromCache) {
+            [wself.tableView endRefreshing];
+        }
+//        wself.weChatEssayList
+        WeChatEssayList *listModel = [[WeChatEssayList alloc]initWithDictionary:model.result error:&erroe];
+        NSArray *list = listModel.list;
+        if (wself.pageIndex > 1 && fromCache) {
+            return;
+        }
+        if (list.count >0) {
+            if (wself.pageIndex == 1) {
+                [wself.weChatEssayList removeAllObjects];
+            }
+            for (WeChatEssayModel *model in list) {
+                [wself.weChatEssayList addObject:model];
+            }
+        }
+        if (listModel.start < listModel.total) {
+            [wself.tableView addPushToRefreshTarget:self loadMoreAction:@selector(pushLoad)];
+        }else {
+            [wself.tableView removePush];
+        }
         [wself.tableView reloadData];
-        [wself.tableView endRefreshing];
+        
     }fail:^(id error) {
         [wself.tableView endRefreshing];
     }];
 }
--(void) loadmore {
-    NSLog(@"loadmore");
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return _weChatEssayList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WeChatTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    __weak __typeof(self)wself = self;
+    __weak __typeof(self)weakSelf = self;
     [cell updataForEssayModel:[_weChatEssayList  objectAtIndex:indexPath.section] reloadCompleted:^{
-        [wself.tableView reloadData];
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        [strongSelf.tableView reloadData];
     }];
     return cell;
 }
 
+#pragma mark - Table view delegate
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    let vc = ChooseAccountBookController()
+//    let navi = UINavigationController(rootViewController: vc)
+//    navi.modalPresentationStyle = .custom
+//    navi.transitioningDelegate  = self
+//    present(navi, animated: true, completion: nil)
+    
+    MineViewController *vcv = [[MineViewController alloc]init];
+    vcv.transitioningDelegate = self;
+    vcv.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:vcv animated:YES completion:nil];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+
+#pragma mark - UIViewControllerTransitioningDelegate
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    //这里我们初始化presentType
+    return [GloablTransitionAnimation transitionWithTransitionType:TransitionAnimationTypePresent scadeRect:CGRectMake(0, 300, UI_SCREEN_WIDTH, 300)];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+    //这里我们初始化dismissType
+    return [GloablTransitionAnimation transitionWithTransitionType:TransitionAnimationTypeDismiss scadeRect:CGRectMake(0, 300, UI_SCREEN_WIDTH, 300)];
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

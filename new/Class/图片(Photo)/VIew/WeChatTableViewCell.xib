@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="470"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="470"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="469"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KXR-mn-IYq">
@@ -37,15 +38,15 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dRX-EV-yVL">
-                        <rect key="frame" x="16" y="44" width="343" height="246"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dRX-EV-yVL">
+                        <rect key="frame" x="16" y="44" width="343" height="193"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" id="zTN-f1-Vf5"/>
+                            <constraint firstAttribute="width" secondItem="dRX-EV-yVL" secondAttribute="height" multiplier="16:9" id="2ia-Mk-1g5"/>
                         </constraints>
                     </imageView>
-                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年3月28日，广州出租屋内开发。是的亲这是测试两行的数据" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPC-IW-eI5">
-                        <rect key="frame" x="16" y="298" width="343" height="48"/>
+                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2017年3月28日，广州出租屋内开发。是的亲这是测试两行的数据" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPC-IW-eI5">
+                        <rect key="frame" x="16" y="245" width="343" height="67"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="w8N-gQ-7gg"/>
@@ -137,7 +138,6 @@
             <connections>
                 <outlet property="content" destination="MF2-ax-CqO" id="pBl-D7-cks"/>
                 <outlet property="contentImage" destination="dRX-EV-yVL" id="gOM-Rb-aeL"/>
-                <outlet property="contentImageHeight" destination="zTN-f1-Vf5" id="rzm-nz-xxJ"/>
                 <outlet property="contentTitle" destination="CPC-IW-eI5" id="TAj-tk-Oda"/>
                 <outlet property="essayTime" destination="0Tz-aG-C60" id="rOw-Gn-Etq"/>
                 <outlet property="likeCount" destination="BVe-F4-Hwl" id="TGT-xN-v6w"/>

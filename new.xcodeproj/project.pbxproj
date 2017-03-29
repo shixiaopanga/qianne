@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24056A0C1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 24056A0B1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m */; };
+		24C2B9BC1E8BE36C003FE13B /* GloablTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C2B9BB1E8BE36C003FE13B /* GloablTransitionAnimation.m */; };
 		24C47F391E8A091E00DD51D4 /* WeChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C47F371E8A091E00DD51D4 /* WeChatTableViewCell.m */; };
 		24C47F3A1E8A091E00DD51D4 /* WeChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24C47F381E8A091E00DD51D4 /* WeChatTableViewCell.xib */; };
 		24C47F3D1E8A1C4A00DD51D4 /* WeChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C47F3C1E8A1C4A00DD51D4 /* WeChatTableViewController.m */; };
@@ -37,6 +38,8 @@
 		03447D97D40B069D4B7DF61E /* Pods-new.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new.release.xcconfig"; path = "Pods/Target Support Files/Pods-new/Pods-new.release.xcconfig"; sourceTree = "<group>"; };
 		24056A0A1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlumpCollectionViewFlowLayout.h; path = CollectionViewCell/SlumpCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		24056A0B1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlumpCollectionViewFlowLayout.m; path = CollectionViewCell/SlumpCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		24C2B9BA1E8BE36C003FE13B /* GloablTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GloablTransitionAnimation.h; path = TransitionAnimation/GloablTransitionAnimation.h; sourceTree = "<group>"; };
+		24C2B9BB1E8BE36C003FE13B /* GloablTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GloablTransitionAnimation.m; path = TransitionAnimation/GloablTransitionAnimation.m; sourceTree = "<group>"; };
 		24C47F361E8A091E00DD51D4 /* WeChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatTableViewCell.h; sourceTree = "<group>"; };
 		24C47F371E8A091E00DD51D4 /* WeChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatTableViewCell.m; sourceTree = "<group>"; };
 		24C47F381E8A091E00DD51D4 /* WeChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeChatTableViewCell.xib; sourceTree = "<group>"; };
@@ -106,6 +109,15 @@
 				24C7A28D1E88B17300D11B58 /* SlumpCollectionViewCell.m */,
 			);
 			name = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		24C2B9B91E8BE0F2003FE13B /* TransitionAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				24C2B9BA1E8BE36C003FE13B /* GloablTransitionAnimation.h */,
+				24C2B9BB1E8BE36C003FE13B /* GloablTransitionAnimation.m */,
+			);
+			name = TransitionAnimation;
 			sourceTree = "<group>";
 		};
 		24C6631A1E812472001BD26E = {
@@ -349,6 +361,7 @@
 		24D957AF1E86812A0052AA1C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				24C2B9B91E8BE0F2003FE13B /* TransitionAnimation */,
 				24C47F3B1E8A1C4A00DD51D4 /* WeChatTableViewController.h */,
 				24C47F3C1E8A1C4A00DD51D4 /* WeChatTableViewController.m */,
 			);
@@ -531,6 +544,7 @@
 				24C74B821E8152EB0003D56B /* XPResponseModel.m in Sources */,
 				24C47F3D1E8A1C4A00DD51D4 /* WeChatTableViewController.m in Sources */,
 				24C47F391E8A091E00DD51D4 /* WeChatTableViewCell.m in Sources */,
+				24C2B9BC1E8BE36C003FE13B /* GloablTransitionAnimation.m in Sources */,
 				24C663281E812472001BD26E /* main.m in Sources */,
 				24D957951E863B7F0052AA1C /* MainNavigationController.m in Sources */,
 				24056A0C1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m in Sources */,

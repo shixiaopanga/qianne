@@ -24,7 +24,6 @@
 }
 - (void)layoutSubviews {
     _showView.frame = self.bounds;
-    NSLog(@"sss");
 }
 
 @end

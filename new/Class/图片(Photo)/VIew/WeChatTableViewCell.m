@@ -7,7 +7,7 @@
 //
 
 #import "WeChatTableViewCell.h"
-#import "WeChatEssayModel.h"
+#import "ONESEssayModel.h"
 #import "UIImageView+WebCache.h"
 #import "SDImageCache.h"
 
@@ -39,8 +39,8 @@
     // Configure the view for the selected state
 }
 
-- (void)updataForEssayModel:(WeChatEssayModel *)model reloadCompleted:(void(^)())completed{
-    _writerName.text = [NSString stringWithFormat:@"%@·%@",model.weixinname,model.weixinaccount];
+- (void)updataForEssayModel:(ONESEssayModel *)model reloadCompleted:(void(^)())completed{
+    _writerName.text = [NSString stringWithFormat:@"ONES · %@",model.author];
 //    UIImage *img = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:model.pic];
 //    if (img) {
 //        _contentImage.image = img;
@@ -49,12 +49,12 @@
 //        _contentImage.image = [UIImage imageNamed:@"placeholder_pic"];
 //        [self resizingDownLoadImage:model.pic reloadCompleted:completed];
 //    }
-    [_contentImage sd_setImageWithURL:[NSURL URLWithString:model.pic] placeholderImage:[UIImage imageNamed:@"placeholder_pic"]];
+    [_contentImage sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:[UIImage imageNamed:@"placeholder_pic"]];
     _contentTitle.text = model.title;
-    _content.text = model.content;
-    _essayTime.text = model.time;
-    [_likeCount setTitle:model.likenum forState:UIControlStateNormal];
-    [_readCount setTitle:model.readnum forState:UIControlStateNormal];
+    _content.text = model.subTitle;
+    _essayTime.text = [self compareCurrentTime:model.postDate];//model.postDate;
+    [_likeCount setTitle:model.likeCount forState:UIControlStateNormal];
+//    [_readCount setTitle:model.readnum forState:UIControlStateNormal];
 }
 
 - (void)resizingDownLoadImage:(NSString *)imageURL reloadCompleted:(void(^)())completed{
@@ -79,5 +79,46 @@
             
         }
     }];
+}
+
+- (NSString *) compareCurrentTime:(NSString *)str
+{
+    
+    //把字符串转为NSdate
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *timeDate = [dateFormatter dateFromString:str];
+    
+    //得到与当前时间差
+    NSTimeInterval  timeInterval = [timeDate timeIntervalSinceNow];
+    timeInterval = -timeInterval;
+    //标准时间和北京时间差8个小时
+    timeInterval = timeInterval - 8*60*60;
+    long temp = 0;
+    NSString *result;
+    if (timeInterval < 60) {
+        result = [NSString stringWithFormat:@"刚刚"];
+    }
+    else if((temp = timeInterval/60) <60){
+        result = [NSString stringWithFormat:@"%ld分钟前",temp];
+    }
+    
+    else if((temp = temp/60) <24){
+        result = [NSString stringWithFormat:@"%ld小时前",temp];
+    }
+    
+    else if((temp = temp/24) <30){
+        result = [NSString stringWithFormat:@"%ld天前",temp];
+    }
+    
+    else if((temp = temp/30) <12){
+        result = [NSString stringWithFormat:@"%ld月前",temp];
+    }
+    else{
+        temp = temp/12;
+        result = [NSString stringWithFormat:@"%ld年前",temp];
+    }
+    
+    return  result;
 }
 @end

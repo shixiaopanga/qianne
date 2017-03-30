@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24056A0C1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 24056A0B1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m */; };
+		2436D2DE1E8CBB5A000EE3C2 /* ONESBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2436D2DD1E8CBB5A000EE3C2 /* ONESBaseModel.m */; };
 		24C2B9BC1E8BE36C003FE13B /* GloablTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C2B9BB1E8BE36C003FE13B /* GloablTransitionAnimation.m */; };
 		24C47F391E8A091E00DD51D4 /* WeChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C47F371E8A091E00DD51D4 /* WeChatTableViewCell.m */; };
 		24C47F3A1E8A091E00DD51D4 /* WeChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24C47F381E8A091E00DD51D4 /* WeChatTableViewCell.xib */; };
@@ -15,6 +16,10 @@
 		24C47F471E8A562600DD51D4 /* UITableView+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C47F461E8A562600DD51D4 /* UITableView+Refresh.m */; };
 		24C47F4E1E8A680700DD51D4 /* WeChatEssayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C47F4D1E8A680700DD51D4 /* WeChatEssayModel.m */; };
 		24C47F511E8A6A7C00DD51D4 /* WeChatEssayList.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C47F501E8A6A7C00DD51D4 /* WeChatEssayList.m */; };
+		24C569081E8CE92600DA49FB /* ONESEssayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C569071E8CE92600DA49FB /* ONESEssayModel.m */; };
+		24C5690B1E8CEB5100DA49FB /* wechatShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C5690A1E8CEB5100DA49FB /* wechatShareModel.m */; };
+		24C569121E8CFF9200DA49FB /* EssayContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C569111E8CFF9200DA49FB /* EssayContentViewController.m */; };
+		24C569151E8D040C00DA49FB /* EssayContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C569141E8D040C00DA49FB /* EssayContentModel.m */; };
 		24C663281E812472001BD26E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C663271E812472001BD26E /* main.m */; };
 		24C6632B1E812472001BD26E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C6632A1E812472001BD26E /* AppDelegate.m */; };
 		24C663311E812472001BD26E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C6632F1E812472001BD26E /* Main.storyboard */; };
@@ -38,6 +43,9 @@
 		03447D97D40B069D4B7DF61E /* Pods-new.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new.release.xcconfig"; path = "Pods/Target Support Files/Pods-new/Pods-new.release.xcconfig"; sourceTree = "<group>"; };
 		24056A0A1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlumpCollectionViewFlowLayout.h; path = CollectionViewCell/SlumpCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		24056A0B1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlumpCollectionViewFlowLayout.m; path = CollectionViewCell/SlumpCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		2436D2D71E8CA62A000EE3C2 /* PANGOPENAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PANGOPENAPI.h; sourceTree = "<group>"; };
+		2436D2DC1E8CBB5A000EE3C2 /* ONESBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONESBaseModel.h; sourceTree = "<group>"; };
+		2436D2DD1E8CBB5A000EE3C2 /* ONESBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONESBaseModel.m; sourceTree = "<group>"; };
 		24C2B9BA1E8BE36C003FE13B /* GloablTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GloablTransitionAnimation.h; path = TransitionAnimation/GloablTransitionAnimation.h; sourceTree = "<group>"; };
 		24C2B9BB1E8BE36C003FE13B /* GloablTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GloablTransitionAnimation.m; path = TransitionAnimation/GloablTransitionAnimation.m; sourceTree = "<group>"; };
 		24C47F361E8A091E00DD51D4 /* WeChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatTableViewCell.h; sourceTree = "<group>"; };
@@ -51,6 +59,14 @@
 		24C47F4D1E8A680700DD51D4 /* WeChatEssayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatEssayModel.m; sourceTree = "<group>"; };
 		24C47F4F1E8A6A7C00DD51D4 /* WeChatEssayList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatEssayList.h; sourceTree = "<group>"; };
 		24C47F501E8A6A7C00DD51D4 /* WeChatEssayList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatEssayList.m; sourceTree = "<group>"; };
+		24C569061E8CE92600DA49FB /* ONESEssayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONESEssayModel.h; sourceTree = "<group>"; };
+		24C569071E8CE92600DA49FB /* ONESEssayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONESEssayModel.m; sourceTree = "<group>"; };
+		24C569091E8CEB5100DA49FB /* wechatShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wechatShareModel.h; sourceTree = "<group>"; };
+		24C5690A1E8CEB5100DA49FB /* wechatShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wechatShareModel.m; sourceTree = "<group>"; };
+		24C569101E8CFF9200DA49FB /* EssayContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EssayContentViewController.h; sourceTree = "<group>"; };
+		24C569111E8CFF9200DA49FB /* EssayContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EssayContentViewController.m; sourceTree = "<group>"; };
+		24C569131E8D040C00DA49FB /* EssayContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EssayContentModel.h; sourceTree = "<group>"; };
+		24C569141E8D040C00DA49FB /* EssayContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EssayContentModel.m; sourceTree = "<group>"; };
 		24C663231E812472001BD26E /* new.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = new.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C663271E812472001BD26E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		24C663291E812472001BD26E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,6 +136,43 @@
 			name = TransitionAnimation;
 			sourceTree = "<group>";
 		};
+		24C569021E8CE90900DA49FB /* 一个(ONES) */ = {
+			isa = PBXGroup;
+			children = (
+				24C569031E8CE90900DA49FB /* Controller */,
+				24C569041E8CE90900DA49FB /* Model */,
+				24C569051E8CE90900DA49FB /* VIew */,
+			);
+			path = "一个(ONES)";
+			sourceTree = "<group>";
+		};
+		24C569031E8CE90900DA49FB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		24C569041E8CE90900DA49FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				24C569061E8CE92600DA49FB /* ONESEssayModel.h */,
+				24C569071E8CE92600DA49FB /* ONESEssayModel.m */,
+				24C569091E8CEB5100DA49FB /* wechatShareModel.h */,
+				24C5690A1E8CEB5100DA49FB /* wechatShareModel.m */,
+				24C569131E8D040C00DA49FB /* EssayContentModel.h */,
+				24C569141E8D040C00DA49FB /* EssayContentModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		24C569051E8CE90900DA49FB /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
 		24C6631A1E812472001BD26E = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +221,7 @@
 				24C6633E1E8127CD001BD26E /* Main */,
 				24D957AA1E86812A0052AA1C /* 首页(Home) */,
 				24D957AE1E86812A0052AA1C /* 公众号(WeiC) */,
+				24C569021E8CE90900DA49FB /* 一个(ONES) */,
 				24D957A61E86812A0052AA1C /* 视频(Video) */,
 				24D957891E861DCE0052AA1C /* 个人中心(Mine) */,
 				24D957A21E86522B0052AA1C /* 工具(Helper) */,
@@ -218,8 +272,11 @@
 			children = (
 				24C74B751E8134D70003D56B /* XPAPI.h */,
 				24C74B761E8134D70003D56B /* XPAPI.m */,
+				2436D2D71E8CA62A000EE3C2 /* PANGOPENAPI.h */,
 				24C74B801E8152EB0003D56B /* XPResponseModel.h */,
 				24C74B811E8152EB0003D56B /* XPResponseModel.m */,
+				2436D2DC1E8CBB5A000EE3C2 /* ONESBaseModel.h */,
+				2436D2DD1E8CBB5A000EE3C2 /* ONESBaseModel.m */,
 			);
 			path = XPAPI;
 			sourceTree = "<group>";
@@ -364,6 +421,8 @@
 				24C2B9B91E8BE0F2003FE13B /* TransitionAnimation */,
 				24C47F3B1E8A1C4A00DD51D4 /* WeChatTableViewController.h */,
 				24C47F3C1E8A1C4A00DD51D4 /* WeChatTableViewController.m */,
+				24C569101E8CFF9200DA49FB /* EssayContentViewController.h */,
+				24C569111E8CFF9200DA49FB /* EssayContentViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -532,9 +591,11 @@
 			files = (
 				24C47F511E8A6A7C00DD51D4 /* WeChatEssayList.m in Sources */,
 				24C74B771E8134D70003D56B /* XPAPI.m in Sources */,
+				24C569081E8CE92600DA49FB /* ONESEssayModel.m in Sources */,
 				24C7A2941E88F75F00D11B58 /* NewsBaseViewController.m in Sources */,
 				24C47F471E8A562600DD51D4 /* UITableView+Refresh.m in Sources */,
 				24D957921E863B570052AA1C /* MainTabBarController.m in Sources */,
+				24C569121E8CFF9200DA49FB /* EssayContentViewController.m in Sources */,
 				24C663441E8127CD001BD26E /* ViewController.m in Sources */,
 				24D9579C1E8649F60052AA1C /* MineViewController.m in Sources */,
 				24C6632B1E812472001BD26E /* AppDelegate.m in Sources */,
@@ -543,8 +604,11 @@
 				24C7A2981E890B1C00D11B58 /* SlumpBar.m in Sources */,
 				24C74B821E8152EB0003D56B /* XPResponseModel.m in Sources */,
 				24C47F3D1E8A1C4A00DD51D4 /* WeChatTableViewController.m in Sources */,
+				24C5690B1E8CEB5100DA49FB /* wechatShareModel.m in Sources */,
 				24C47F391E8A091E00DD51D4 /* WeChatTableViewCell.m in Sources */,
 				24C2B9BC1E8BE36C003FE13B /* GloablTransitionAnimation.m in Sources */,
+				24C569151E8D040C00DA49FB /* EssayContentModel.m in Sources */,
+				2436D2DE1E8CBB5A000EE3C2 /* ONESBaseModel.m in Sources */,
 				24C663281E812472001BD26E /* main.m in Sources */,
 				24D957951E863B7F0052AA1C /* MainNavigationController.m in Sources */,
 				24056A0C1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m in Sources */,

@@ -9,13 +9,12 @@
 #import "WeChatTableViewController.h"
 #import "WeChatTableViewCell.h"
 #import "UITableView+Refresh.h"
-#import "WeChatEssayList.h"
-#import "WeChatEssayModel.h"
+#import "ONESEssayModel.h"
 #import "GloablTransitionAnimation.h"
-#import "MineViewController.h"
+#import "EssayContentViewController.h"
 
 @interface WeChatTableViewController ()<UIViewControllerTransitioningDelegate>
-@property (nonatomic, copy) NSMutableArray *weChatEssayList;
+@property (nonatomic, copy) NSMutableArray *ONESEssayList;
 @property (nonatomic, assign) NSInteger pageIndex;
 @end
 
@@ -33,7 +32,7 @@ static NSString * const  cellIdentifier = @"WeChatTableViewCell";
     self.transitioningDelegate = self;
     self.modalPresentationStyle = UIModalPresentationCustom;
     
-    _weChatEssayList = [[NSMutableArray alloc]init];
+    _ONESEssayList = [[NSMutableArray alloc]init];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView registerNib:[UINib nibWithNibName:@"WeChatTableViewCell" bundle:nil] forCellReuseIdentifier:@"WeChatTableViewCell"];
@@ -44,47 +43,73 @@ static NSString * const  cellIdentifier = @"WeChatTableViewCell";
     [self.tableView addPullToRefreshTarget:self refreshingAction:@selector(pullLoad) loadMoreAction:@selector(pushLoad)];
 }
 - (void)pullLoad{
-    _pageIndex = 1;
+    _pageIndex = 0;
     [self loadMoreData];
 }
 -(void)pushLoad {
-    _pageIndex += 10;
+    if (_ONESEssayList.lastObject) {
+        _pageIndex += 10;
+    }
+    
     [self loadMoreData];
 }
 - (void)loadMoreData {
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
-    params[@"channelid"] = [NSString stringWithFormat:@"%d",1];
-    params[@"start"] = [NSString stringWithFormat:@"%ld",_pageIndex];
+    params[@"channelid"] = [NSString stringWithFormat:@"%d",3];
+    NSString *index = [NSString stringWithFormat:@"%ld",_pageIndex];
     params[@"appkey"] = @"80b2ac506f71f10a";
     
     __weak __typeof(self)wself = self;
-    [XPAPI getWeChatEssayWithParameters:params needCache:YES succeed:^(BOOL fromCache,XPResponseModel *model){
-    NSError *erroe;
+//    [XPAPI getWeChatEssayWithParameters:params needCache:YES succeed:^(BOOL fromCache,XPResponseModel *model){
+//    NSError *erroe;
+//        if (!fromCache) {
+//            [wself.tableView endRefreshing];
+//        }
+////        wself.weChatEssayList
+//        WeChatEssayList *listModel = [[WeChatEssayList alloc]initWithDictionary:model.result error:&erroe];
+//        NSArray *list = listModel.list;
+//        if (wself.pageIndex > 1 && fromCache) {
+//            return;
+//        }
+//        if (list.count >0) {
+//            if (wself.pageIndex == 1) {
+//                [wself.weChatEssayList removeAllObjects];
+//            }
+//            for (WeChatEssayModel *model in list) {
+//                [wself.weChatEssayList addObject:model];
+//            }
+//        }
+//        if (listModel.start < listModel.total) {
+//            [wself.tableView addPushToRefreshTarget:self loadMoreAction:@selector(pushLoad)];
+//        }else {
+//            [wself.tableView removePush];
+//        }
+//        [wself.tableView reloadData];
+//
+//    }fail:^(id error) {
+//        [wself.tableView endRefreshing];
+//    }];
+    [XPAPI getOnesEssayListAtIndex:index needCache:YES succeed:^(BOOL fromCache, ONESBaseModel *onesModel) {
+        NSError *erroe;
         if (!fromCache) {
             [wself.tableView endRefreshing];
         }
-//        wself.weChatEssayList
-        WeChatEssayList *listModel = [[WeChatEssayList alloc]initWithDictionary:model.result error:&erroe];
-        NSArray *list = listModel.list;
+        NSArray *list = [ONESEssayModel arrayOfModelsFromDictionaries:onesModel.data error:&erroe ];
         if (wself.pageIndex > 1 && fromCache) {
             return;
         }
         if (list.count >0) {
-            if (wself.pageIndex == 1) {
-                [wself.weChatEssayList removeAllObjects];
+            if (wself.pageIndex == 0) {
+                [wself.ONESEssayList removeAllObjects];
             }
-            for (WeChatEssayModel *model in list) {
-                [wself.weChatEssayList addObject:model];
+            for (ONESEssayModel *model in list) {
+                [wself.ONESEssayList addObject:model];
             }
         }
-        if (listModel.start < listModel.total) {
-            [wself.tableView addPushToRefreshTarget:self loadMoreAction:@selector(pushLoad)];
-        }else {
-            [wself.tableView removePush];
-        }
-        [wself.tableView reloadData];
         
-    }fail:^(id error) {
+        [wself.tableView reloadData];
+
+    } fail:^(NSError *error) {
         [wself.tableView endRefreshing];
     }];
 }
@@ -96,7 +121,7 @@ static NSString * const  cellIdentifier = @"WeChatTableViewCell";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _weChatEssayList.count;
+    return _ONESEssayList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -105,7 +130,7 @@ static NSString * const  cellIdentifier = @"WeChatTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WeChatTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     __weak __typeof(self)weakSelf = self;
-    [cell updataForEssayModel:[_weChatEssayList  objectAtIndex:indexPath.section] reloadCompleted:^{
+    [cell updataForEssayModel:[_ONESEssayList  objectAtIndex:indexPath.section] reloadCompleted:^{
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         [strongSelf.tableView reloadData];
     }];
@@ -115,16 +140,12 @@ static NSString * const  cellIdentifier = @"WeChatTableViewCell";
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    let vc = ChooseAccountBookController()
-//    let navi = UINavigationController(rootViewController: vc)
-//    navi.modalPresentationStyle = .custom
-//    navi.transitioningDelegate  = self
-//    present(navi, animated: true, completion: nil)
-    
-    MineViewController *vcv = [[MineViewController alloc]init];
-    vcv.transitioningDelegate = self;
-    vcv.modalPresentationStyle = UIModalPresentationCustom;
-    [self presentViewController:vcv animated:YES completion:nil];
+//    MineViewController *vcv = [[MineViewController alloc]init];
+//    vcv.transitioningDelegate = self;
+//    vcv.modalPresentationStyle = UIModalPresentationCustom;
+//    [self presentViewController:vcv animated:YES completion:nil];
+    EssayContentViewController *vc = [[EssayContentViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

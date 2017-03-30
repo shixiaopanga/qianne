@@ -11,7 +11,8 @@
 #import "HomeViewController.h"
 #import "WeChatTableViewController.h"
 #import "MineViewController.h"
-
+#import "XPAPI.h"
+#import "ONESEssayModel.h"
 @interface MainTabBarController ()
 
 @end

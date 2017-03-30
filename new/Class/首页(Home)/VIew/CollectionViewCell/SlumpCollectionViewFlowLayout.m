@@ -25,11 +25,6 @@
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
     return YES;
 }
--(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
-    NSLog(@"%f-------%f",proposedContentOffset.x,velocity.x);
-    
-    return proposedContentOffset;
-}
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSArray *AttributesArray = [[NSArray alloc]initWithArray:[super layoutAttributesForElementsInRect:rect] copyItems:YES];
     CGFloat centerX = self.collectionView.contentOffset.x + UI_SCREEN_WIDTH * 0.5;

@@ -10,10 +10,9 @@
 #import "AFNetworking.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "YYCache.h"
-
+#import "PANGOPENAPI.h"
 @implementation XPAPI
 
-static NSString * const JSSJ_SERVER_UR = @"http://api.jisuapi.com/";
 static NSString * const HTTP_DATA_CACHE = @"PANGJLUZHCACHE";
 static AFHTTPSessionManager *_manager;
 static YYCache *_dataCache;
@@ -30,29 +29,87 @@ static YYCache *_dataCache;
     _dataCache = [YYCache cacheWithName:HTTP_DATA_CACHE];
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
 }
-/**
- *  GET请求 <若开启缓存，先读取本地缓存数据，再进行网络请求>
- *
- *  @param urlString  请求地址
- *  @param parameters 拼接的参数
- *  @param needCache  是否开启缓存
- *  @param succeed    请求成功
- *  @param fail       请求失败
+
+/*
+ 
+ *********************************************************************************
+ *                                                                                *
+ * ONES API访问回调方法                                                             *
+ * 回调为一个    ONESApiCompletion    block                                         *
+ *                                                                                *
+ *********************************************************************************
+ 
  */
-+ (void)get:(NSString *)urlString parameters:(id)parameters needCache:(BOOL)needCache succeed:(XPApiCompletionHandler)succeed fail:(void (^)(NSError *))fail {
++ (void)onesBaseGET:(NSString *)urlString parameters:(id)parameters needCache:(BOOL)needCache succeed:(ONESApiCompletion)succeed fail:(void (^)(NSError * error))fail {
+    NSString *url = [NSString stringWithFormat:@"%@%@",ONES_SERVER_URL,urlString];
+    id cacheData = [self cacheForURL:url parameters:parameters];
+    if (cacheData && succeed) {
+        NSError *erroe;
+        ONESBaseModel * model = [[ONESBaseModel alloc]initWithDictionary:cacheData error:&erroe];
+        succeed(YES,model);
+    }
+    [_manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (needCache) {
+            [self saveCache:responseObject URL:url parameters:parameters];
+        }
+        if (succeed) {
+            NSError *erroe;
+            ONESBaseModel * model = [[ONESBaseModel alloc]initWithDictionary:responseObject error:&erroe];
+            succeed(NO,model);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (fail) {
+            fail(error);
+        }
+    }];
+}
++ (void)onesBasePOST:(NSString *)urlString parameters:(id)parameters needCache:(BOOL)needCache succeed:(ONESApiCompletion)succeed fail:(void(^)(NSError *error))fail {
+    NSString *url = [NSString stringWithFormat:@"%@%@",ONES_SERVER_URL,urlString];
+    id cacheData = [self cacheForURL:url parameters:parameters];
+    if (cacheData && succeed) {
+        NSError *erroe;
+        ONESBaseModel * model = [[ONESBaseModel alloc]initWithDictionary:cacheData error:&erroe];
+        succeed(YES,model);
+    }
+    [_manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (needCache) {
+            [self saveCache:responseObject URL:url parameters:parameters];
+        }
+        if (succeed) {
+            NSError *erroe;
+            ONESBaseModel * model = [[ONESBaseModel alloc]initWithDictionary:responseObject error:&erroe];
+            succeed(NO,model);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (fail) {
+            fail(error);
+        }
+    }];
     
-    //判断是否有缓存数据，先展示
-    id cacheData = [self cacheForURL:urlString parameters:parameters];
+}
+
+
+/*
+*********************************************************************************
+*                                                                                *
+* 极速数据 API访问回调方法                                                           *
+* 回调为一个    XPApiCompletionHandler    block                                    *
+*                                                                                *
+*********************************************************************************
+
+*/
+
++ (void)get:(NSString *)urlString parameters:(id)parameters needCache:(BOOL)needCache succeed:(XPApiCompletionHandler)succeed fail:(void (^)(NSError *error))fail {
+    NSString *url = [NSString stringWithFormat:@"%@%@",JSSJ_SERVER_URL,urlString];
+    id cacheData = [self cacheForURL:url parameters:parameters];
     if (cacheData && succeed) {
         NSError *erroe;
         XPResponseModel * model = [[XPResponseModel alloc]initWithDictionary:cacheData error:&erroe];
         succeed(YES,model);
     }
-    //执行网络操作
-    [_manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        // 请求成功，加入缓存，解析数据
+    [_manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (needCache) {
-           [self saveCache:responseObject URL:urlString parameters:parameters];
+           [self saveCache:responseObject URL:url parameters:parameters];
         }
         if (succeed) {
             NSError *erroe;
@@ -60,35 +117,27 @@ static YYCache *_dataCache;
             succeed(NO,model);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        // 请求失败
+
         if (fail) {
             fail(error);
         }
     }];
 }
-/**
- *  POST请求 <若开启缓存，先读取本地缓存数据，再进行网络请求，>
- *
- *  @param urlString  请求地址
- *  @param parameters 拼接的参数
- *  @param needCache  是否开启缓存机制
- *  @param succeed    请求成功
- *  @param fail       请求失败
- */
+
 + (void)post:(NSString *)urlString parameters:(id)parameters needCache:(BOOL)needCache succeed:(XPApiCompletionHandler)succeed fail:(void(^)(NSError *error))fail {
-    id cacheData = [self cacheForURL:urlString parameters:parameters];
+    NSString *url = [NSString stringWithFormat:@"%@%@",JSSJ_SERVER_URL,urlString];
+    id cacheData = [self cacheForURL:url parameters:parameters];
     if (cacheData && succeed) {
         NSError *erroe;
         XPResponseModel * model = [[XPResponseModel alloc]initWithData:cacheData error:&erroe];
         succeed(YES,model);
     }
-    [_manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [_manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (needCache) {
-            [self saveCache:responseObject URL:urlString parameters:parameters];
+            [self saveCache:responseObject URL:url parameters:parameters];
         }
         if (succeed) {
             NSError *erroe;
-            
             XPResponseModel * model = [[XPResponseModel alloc]initWithData:responseObject error:&erroe];
             succeed(NO,model);
         }
@@ -97,20 +146,30 @@ static YYCache *_dataCache;
             fail(error);
         }
     }];
-
 }
+
+
+
+/*
+ *********************************************************************************
+ *                                                                                *
+ * 缓存相关操作                                                                      *
+ *                                                                                *
+ *********************************************************************************
+ 
+ */
 
 
 + (void)saveCache:(id)httpData URL:(NSString *)URL parameters:(NSDictionary *)parameters {
     NSString *cacheKey = [self cacheKeyWithURL:URL parameters:parameters];
-    NSLog(@"save cachetest");
-    //异步缓存,不会阻塞主线程
     [_dataCache setObject:httpData forKey:cacheKey withBlock:nil];
 }
+
 + (id)cacheForURL:(NSString *)URL parameters:(NSDictionary *)parameters {
     NSString *cacheKey = [self cacheKeyWithURL:URL parameters:parameters];
     return [_dataCache objectForKey:cacheKey];
 }
+
 + (NSString *)cacheKeyWithURL:(NSString *)URL parameters:(NSDictionary *)parameters {
     if(!parameters){return URL;};
     NSData *stringData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
@@ -126,10 +185,33 @@ static YYCache *_dataCache;
     return [_dataCache.diskCache totalCost];
 }
 
-// 获取微信公众号文章(极速数据)
+
+
+/*
+ *********************************************************************************
+ *                                                                                *
+ * ONES 具体接口的实现                                                               *
+ *                                                                                *
+ *********************************************************************************
+ 
+ */
+// ONES 获取文章列表
++ (void)getOnesEssayListAtIndex:(NSString *)index needCache:(BOOL)needCache succeed:(ONESApiCompletion)succeed fail:(void (^)(NSError *error))fail {
+    [self onesBaseGET:[NSString stringWithFormat:ONES_READING,index] parameters:nil needCache:needCache succeed:succeed fail:fail];
+}
+// ONES 获取文章详情
++ (void)getOnesEssayContentFromEssayID:(NSString *)essay needCache:(BOOL)needCache succeed:(ONESApiCompletion)succeed fail:(void (^)(NSError *))fail {
+    [self onesBaseGET:[NSString stringWithFormat:ONES_READING_CONTENT,essay] parameters:nil needCache:needCache succeed:succeed fail:fail];
+}
+/*
+ *********************************************************************************
+ *                                                                                *
+ * 极速数据 具体接口的实现                                                             *
+ *                                                                                *
+ *********************************************************************************
+ 
+ */
 + (void)getWeChatEssayWithParameters:(id)parameters needCache:(BOOL)needCache succeed:(XPApiCompletionHandler)succeed fail:(void (^)(NSError *))fail {
-    static NSString * const  WECHAT_ESSAY = @"weixinarticle/get";
-    NSString * url = [NSString stringWithFormat:@"%@%@",JSSJ_SERVER_UR, WECHAT_ESSAY];
-    [self get:url parameters:parameters needCache:needCache succeed:succeed fail:fail];
+    [self get:JSSJ_WECHATESSAY parameters:parameters needCache:needCache succeed:succeed fail:fail];
 }
 @end

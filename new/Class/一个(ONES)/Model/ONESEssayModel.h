@@ -9,7 +9,8 @@
 #import <JSONModel/JSONModel.h>
 #import "wechatShareModel.h"
 @interface ONESEssayModel : JSONModel
-@property (nonatomic, copy) NSString *index;
+@property (nonatomic, assign) NSInteger index;
+@property (nonatomic, copy) NSString *essayID;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subTitle;
 @property (nonatomic, copy) NSString *image;

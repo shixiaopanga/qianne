@@ -18,7 +18,7 @@
                                                                   @"content": @"hp_content",
                                                                   @"likeCount": @"praisenum",
                                                                   @"share": @"share_list.wx",
-//                                                                  @"author": @"author.user_name"
+                                                                  @"author": @"hp_author"
                                                                   }];
 }
 

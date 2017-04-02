@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="431"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="430"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="431"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="KXR-mn-IYq">
@@ -46,7 +46,7 @@
                         </constraints>
                     </imageView>
                     <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年3月28日，广州出租屋内开发。是的亲这是测试两行的数据" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPC-IW-eI5">
-                        <rect key="frame" x="16" y="245" width="343" height="65.5"/>
+                        <rect key="frame" x="16" y="245" width="343" height="66"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="w8N-gQ-7gg"/>
@@ -56,7 +56,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3月28日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Tz-aG-C60">
-                        <rect key="frame" x="16" y="395.5" width="54" height="20"/>
+                        <rect key="frame" x="16" y="396" width="54" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="wMN-0e-Osq"/>
                         </constraints>
@@ -65,20 +65,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwa-o0-LcU">
-                        <rect key="frame" x="249" y="395.5" width="55" height="20"/>
+                        <rect key="frame" x="284" y="396" width="20" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="55" id="7Mq-f9-YqF"/>
-                            <constraint firstAttribute="height" constant="20" id="9Ct-8h-f6J"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="999" image="weChat_share">
+                        <state key="normal" backgroundImage="weChat_share">
                             <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MF2-ax-CqO">
-                        <rect key="frame" x="16" y="315.5" width="343" height="70"/>
+                        <rect key="frame" x="16" y="316" width="343" height="70"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="ADg-0U-5l5"/>
@@ -88,14 +84,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZC-bI-xhY">
-                        <rect key="frame" x="0.0" y="425.5" width="375" height="5"/>
-                        <color key="backgroundColor" red="0.92507153749465942" green="0.92613863945007324" blue="0.92938894033432007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="0.0" y="426" width="375" height="5"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="5" id="ULG-AX-v2T"/>
                         </constraints>
                     </view>
                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVe-F4-Hwl">
-                        <rect key="frame" x="304" y="395.5" width="55" height="20"/>
+                        <rect key="frame" x="304" y="396" width="55" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="55" id="mVo-Di-85z"/>
@@ -152,6 +148,6 @@
     <resources>
         <image name="icon" width="575" height="576"/>
         <image name="weChat_like_select" width="15" height="15"/>
-        <image name="weChat_share" width="15" height="15"/>
+        <image name="weChat_share" width="20" height="20"/>
     </resources>
 </document>

@@ -17,5 +17,5 @@
 @property (nonatomic, copy) NSString *copyright;
 @property (nonatomic, copy) NSString *likeCount;
 @property (nonatomic, assign) wechatShareModel *share;
-//@property (nonatomic, copy) NSString <Optional>*author;
+@property (nonatomic, copy) NSString <Optional>*author;
 @end

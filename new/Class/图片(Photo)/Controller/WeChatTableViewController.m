@@ -10,12 +10,14 @@
 #import "WeChatTableViewCell.h"
 #import "UITableView+Refresh.h"
 #import "ONESEssayModel.h"
+#import "MainNavigationController.h"
 #import "GloablTransitionAnimation.h"
 #import "EssayContentViewController.h"
 
 @interface WeChatTableViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic, copy) NSMutableArray *ONESEssayList;
 @property (nonatomic, assign) NSInteger pageIndex;
+@property (nonatomic, assign) CGRect presentRect;
 @end
 
 @implementation WeChatTableViewController
@@ -27,7 +29,7 @@ static NSString * const  cellIdentifier = @"WeChatTableViewCell";
     
 }
 - (void)setupTableView {
-    self.navigationItem.title = @"微信精选文章";
+    self.navigationItem.title = @"ONE 精选文章";
     
     self.transitioningDelegate = self;
     self.modalPresentationStyle = UIModalPresentationCustom;
@@ -45,50 +47,21 @@ static NSString * const  cellIdentifier = @"WeChatTableViewCell";
 - (void)pullLoad{
     _pageIndex = 0;
     [self loadMoreData];
+    [self.tableView endRefreshing];
 }
 -(void)pushLoad {
     if (_ONESEssayList.lastObject) {
-        _pageIndex += 10;
+        ONESEssayModel *model = _ONESEssayList.lastObject;
+        _pageIndex = model.index;
+        [self loadMoreData];
     }
     
-    [self loadMoreData];
+    
 }
 - (void)loadMoreData {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
-    params[@"channelid"] = [NSString stringWithFormat:@"%d",3];
     NSString *index = [NSString stringWithFormat:@"%ld",_pageIndex];
-    params[@"appkey"] = @"80b2ac506f71f10a";
     
     __weak __typeof(self)wself = self;
-//    [XPAPI getWeChatEssayWithParameters:params needCache:YES succeed:^(BOOL fromCache,XPResponseModel *model){
-//    NSError *erroe;
-//        if (!fromCache) {
-//            [wself.tableView endRefreshing];
-//        }
-////        wself.weChatEssayList
-//        WeChatEssayList *listModel = [[WeChatEssayList alloc]initWithDictionary:model.result error:&erroe];
-//        NSArray *list = listModel.list;
-//        if (wself.pageIndex > 1 && fromCache) {
-//            return;
-//        }
-//        if (list.count >0) {
-//            if (wself.pageIndex == 1) {
-//                [wself.weChatEssayList removeAllObjects];
-//            }
-//            for (WeChatEssayModel *model in list) {
-//                [wself.weChatEssayList addObject:model];
-//            }
-//        }
-//        if (listModel.start < listModel.total) {
-//            [wself.tableView addPushToRefreshTarget:self loadMoreAction:@selector(pushLoad)];
-//        }else {
-//            [wself.tableView removePush];
-//        }
-//        [wself.tableView reloadData];
-//
-//    }fail:^(id error) {
-//        [wself.tableView endRefreshing];
-//    }];
     [XPAPI getOnesEssayListAtIndex:index needCache:YES succeed:^(BOOL fromCache, ONESBaseModel *onesModel) {
         NSError *erroe;
         if (!fromCache) {
@@ -140,19 +113,27 @@ static NSString * const  cellIdentifier = @"WeChatTableViewCell";
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    MineViewController *vcv = [[MineViewController alloc]init];
-//    vcv.transitioningDelegate = self;
-//    vcv.modalPresentationStyle = UIModalPresentationCustom;
-//    [self presentViewController:vcv animated:YES completion:nil];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    _presentRect = [cell convertRect:cell.contentView.frame toView:self.tableView.superview];
+    if (_presentRect.origin.y < 64) {
+        CGFloat subHeight = _presentRect.origin.y - 64;
+        _presentRect.origin.y = 64;
+        _presentRect.size.height += subHeight;
+    }
+    ONESEssayModel *model = [_ONESEssayList  objectAtIndex:indexPath.section];
     EssayContentViewController *vc = [[EssayContentViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    vc.essayID = model.essayID;
+    MainNavigationController *nav = [[MainNavigationController alloc]initWithRootViewController:vc];
+    nav.transitioningDelegate = self;
+    nav.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 
 #pragma mark - UIViewControllerTransitioningDelegate
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
     //这里我们初始化presentType
-    return [GloablTransitionAnimation transitionWithTransitionType:TransitionAnimationTypePresent scadeRect:CGRectMake(0, 300, UI_SCREEN_WIDTH, 300)];
+    return [GloablTransitionAnimation transitionWithTransitionType:TransitionAnimationTypePresent scadeRect:_presentRect];
 }
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
     //这里我们初始化dismissType

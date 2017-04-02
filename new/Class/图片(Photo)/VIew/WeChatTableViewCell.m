@@ -40,7 +40,7 @@
 }
 
 - (void)updataForEssayModel:(ONESEssayModel *)model reloadCompleted:(void(^)())completed{
-    _writerName.text = [NSString stringWithFormat:@"ONES · %@",model.author];
+    _writerName.text = [NSString stringWithFormat:@"ONE · %@",model.author];
 //    UIImage *img = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:model.pic];
 //    if (img) {
 //        _contentImage.image = img;
@@ -93,7 +93,7 @@
     NSTimeInterval  timeInterval = [timeDate timeIntervalSinceNow];
     timeInterval = -timeInterval;
     //标准时间和北京时间差8个小时
-    timeInterval = timeInterval - 8*60*60;
+//    timeInterval = timeInterval - 8*60*60;
     long temp = 0;
     NSString *result;
     if (timeInterval < 60) {

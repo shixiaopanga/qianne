@@ -30,7 +30,7 @@
     [self setupChildViewController:home title:@"首 页" imageName:@"tab_home" selectedImage:@"tab_home_sl"];
     
     WeChatTableViewController *photo = [[WeChatTableViewController alloc]init];
-    [self setupChildViewController:photo title:@"公众号" imageName:@"tab_photo" selectedImage:@"tab_photo_sl"];
+    [self setupChildViewController:photo title:@"ONE" imageName:@"tab_photo" selectedImage:@"tab_photo_sl"];
     
     UIViewController *video = [[UIViewController alloc]init];
     [self setupChildViewController:video title:@"视 频" imageName:@"tab_video" selectedImage:@"tab_video_sl"];

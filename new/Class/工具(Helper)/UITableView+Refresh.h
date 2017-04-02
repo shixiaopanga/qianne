@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UITableView (Refresh)
-- (void)addPullToRefreshTarget:(id)target refreshingAction:(SEL)refreshingAction loadMoreAction:(SEL)loadMoreAction;
-- (void)addPushToRefreshTarget:(id)target loadMoreAction:(SEL _Nonnull)loadMoreAction;
-- (void)removePush;
+- (void)addPullToRefreshTarget:(id _Nonnull)target refreshingAction:(SEL _Nonnull)refreshingAction loadMoreAction:(SEL _Nonnull)loadMoreAction;
 - (void)endRefreshing ;
 @end

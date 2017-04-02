@@ -13,6 +13,7 @@
 {
     return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
                                   @"index": @"id",
+                                  @"essayID": @"item_id",
                                   @"subTitle": @"forward",
                                   @"image": @"img_url",
                                   @"likeCount": @"like_count",

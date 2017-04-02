@@ -48,11 +48,11 @@
 		2436D2DD1E8CBB5A000EE3C2 /* ONESBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONESBaseModel.m; sourceTree = "<group>"; };
 		24C2B9BA1E8BE36C003FE13B /* GloablTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GloablTransitionAnimation.h; path = TransitionAnimation/GloablTransitionAnimation.h; sourceTree = "<group>"; };
 		24C2B9BB1E8BE36C003FE13B /* GloablTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GloablTransitionAnimation.m; path = TransitionAnimation/GloablTransitionAnimation.m; sourceTree = "<group>"; };
-		24C47F361E8A091E00DD51D4 /* WeChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatTableViewCell.h; sourceTree = "<group>"; };
-		24C47F371E8A091E00DD51D4 /* WeChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatTableViewCell.m; sourceTree = "<group>"; };
-		24C47F381E8A091E00DD51D4 /* WeChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeChatTableViewCell.xib; sourceTree = "<group>"; };
-		24C47F3B1E8A1C4A00DD51D4 /* WeChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatTableViewController.h; sourceTree = "<group>"; };
-		24C47F3C1E8A1C4A00DD51D4 /* WeChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatTableViewController.m; sourceTree = "<group>"; };
+		24C47F361E8A091E00DD51D4 /* WeChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeChatTableViewCell.h; path = "../../图片(Photo)/VIew/WeChatTableViewCell.h"; sourceTree = "<group>"; };
+		24C47F371E8A091E00DD51D4 /* WeChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeChatTableViewCell.m; path = "../../图片(Photo)/VIew/WeChatTableViewCell.m"; sourceTree = "<group>"; };
+		24C47F381E8A091E00DD51D4 /* WeChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeChatTableViewCell.xib; path = "../../图片(Photo)/VIew/WeChatTableViewCell.xib"; sourceTree = "<group>"; };
+		24C47F3B1E8A1C4A00DD51D4 /* WeChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeChatTableViewController.h; path = "../../图片(Photo)/Controller/WeChatTableViewController.h"; sourceTree = "<group>"; };
+		24C47F3C1E8A1C4A00DD51D4 /* WeChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeChatTableViewController.m; path = "../../图片(Photo)/Controller/WeChatTableViewController.m"; sourceTree = "<group>"; };
 		24C47F451E8A562600DD51D4 /* UITableView+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Refresh.h"; sourceTree = "<group>"; };
 		24C47F461E8A562600DD51D4 /* UITableView+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Refresh.m"; sourceTree = "<group>"; };
 		24C47F4C1E8A680700DD51D4 /* WeChatEssayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatEssayModel.h; sourceTree = "<group>"; };
@@ -63,8 +63,8 @@
 		24C569071E8CE92600DA49FB /* ONESEssayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONESEssayModel.m; sourceTree = "<group>"; };
 		24C569091E8CEB5100DA49FB /* wechatShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wechatShareModel.h; sourceTree = "<group>"; };
 		24C5690A1E8CEB5100DA49FB /* wechatShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wechatShareModel.m; sourceTree = "<group>"; };
-		24C569101E8CFF9200DA49FB /* EssayContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EssayContentViewController.h; sourceTree = "<group>"; };
-		24C569111E8CFF9200DA49FB /* EssayContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EssayContentViewController.m; sourceTree = "<group>"; };
+		24C569101E8CFF9200DA49FB /* EssayContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EssayContentViewController.h; path = "../../图片(Photo)/Controller/EssayContentViewController.h"; sourceTree = "<group>"; };
+		24C569111E8CFF9200DA49FB /* EssayContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EssayContentViewController.m; path = "../../图片(Photo)/Controller/EssayContentViewController.m"; sourceTree = "<group>"; };
 		24C569131E8D040C00DA49FB /* EssayContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EssayContentModel.h; sourceTree = "<group>"; };
 		24C569141E8D040C00DA49FB /* EssayContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EssayContentModel.m; sourceTree = "<group>"; };
 		24C663231E812472001BD26E /* new.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = new.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +134,7 @@
 				24C2B9BB1E8BE36C003FE13B /* GloablTransitionAnimation.m */,
 			);
 			name = TransitionAnimation;
+			path = "../../图片(Photo)/Controller";
 			sourceTree = "<group>";
 		};
 		24C569021E8CE90900DA49FB /* 一个(ONES) */ = {
@@ -149,6 +150,11 @@
 		24C569031E8CE90900DA49FB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				24C2B9B91E8BE0F2003FE13B /* TransitionAnimation */,
+				24C47F3B1E8A1C4A00DD51D4 /* WeChatTableViewController.h */,
+				24C47F3C1E8A1C4A00DD51D4 /* WeChatTableViewController.m */,
+				24C569101E8CFF9200DA49FB /* EssayContentViewController.h */,
+				24C569111E8CFF9200DA49FB /* EssayContentViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +175,9 @@
 		24C569051E8CE90900DA49FB /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				24C47F361E8A091E00DD51D4 /* WeChatTableViewCell.h */,
+				24C47F371E8A091E00DD51D4 /* WeChatTableViewCell.m */,
+				24C47F381E8A091E00DD51D4 /* WeChatTableViewCell.xib */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -418,11 +427,6 @@
 		24D957AF1E86812A0052AA1C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				24C2B9B91E8BE0F2003FE13B /* TransitionAnimation */,
-				24C47F3B1E8A1C4A00DD51D4 /* WeChatTableViewController.h */,
-				24C47F3C1E8A1C4A00DD51D4 /* WeChatTableViewController.m */,
-				24C569101E8CFF9200DA49FB /* EssayContentViewController.h */,
-				24C569111E8CFF9200DA49FB /* EssayContentViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -441,9 +445,6 @@
 		24D957B11E86812A0052AA1C /* VIew */ = {
 			isa = PBXGroup;
 			children = (
-				24C47F361E8A091E00DD51D4 /* WeChatTableViewCell.h */,
-				24C47F371E8A091E00DD51D4 /* WeChatTableViewCell.m */,
-				24C47F381E8A091E00DD51D4 /* WeChatTableViewCell.xib */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -737,6 +738,7 @@
 				DEVELOPMENT_TEAM = MB4JGKJ366;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = new/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jluzh.qn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -752,6 +754,7 @@
 				DEVELOPMENT_TEAM = MB4JGKJ366;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = new/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jluzh.qn;
 				PRODUCT_NAME = "$(TARGET_NAME)";

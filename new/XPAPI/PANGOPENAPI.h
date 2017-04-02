@@ -23,7 +23,7 @@
 // ONES 阅读地址，控制最后阅读的id可获取不同分页，每页10条数据，“0”默认为去最新10条数据
 #define ONES_READING                        @"channel/reading/more/%@"
 // ONES 文章详情页
-#define ONES_READING_CONTENT                @"essay/%@"
+#define ONES_READING_CONTENT                @"essay/%@?platform=ios&version=v4.1"
 
 /*
  

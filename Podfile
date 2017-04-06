@@ -7,7 +7,6 @@ target 'new' do
 
   pod 'AFNetworking', '~> 3.0'
   pod 'JSONModel'
-  
   pod 'SDWebImage'
   pod 'YYCache'
   pod 'MJRefresh'

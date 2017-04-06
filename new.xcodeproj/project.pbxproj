@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		24056A0C1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 24056A0B1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m */; };
+		241A809A1E96481C0010ECDF /* VideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 241A80981E96481C0010ECDF /* VideoTableViewCell.m */; };
+		241A809B1E96481C0010ECDF /* VideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 241A80991E96481C0010ECDF /* VideoTableViewCell.xib */; };
 		2436D2DE1E8CBB5A000EE3C2 /* ONESBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2436D2DD1E8CBB5A000EE3C2 /* ONESBaseModel.m */; };
 		24C2B9BC1E8BE36C003FE13B /* GloablTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C2B9BB1E8BE36C003FE13B /* GloablTransitionAnimation.m */; };
 		24C47F391E8A091E00DD51D4 /* WeChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C47F371E8A091E00DD51D4 /* WeChatTableViewCell.m */; };
@@ -43,6 +45,9 @@
 		03447D97D40B069D4B7DF61E /* Pods-new.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new.release.xcconfig"; path = "Pods/Target Support Files/Pods-new/Pods-new.release.xcconfig"; sourceTree = "<group>"; };
 		24056A0A1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlumpCollectionViewFlowLayout.h; path = CollectionViewCell/SlumpCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		24056A0B1E8811BE0094E21C /* SlumpCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlumpCollectionViewFlowLayout.m; path = CollectionViewCell/SlumpCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		241A80971E96481C0010ECDF /* VideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTableViewCell.h; sourceTree = "<group>"; };
+		241A80981E96481C0010ECDF /* VideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewCell.m; sourceTree = "<group>"; };
+		241A80991E96481C0010ECDF /* VideoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoTableViewCell.xib; sourceTree = "<group>"; };
 		2436D2D71E8CA62A000EE3C2 /* PANGOPENAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PANGOPENAPI.h; sourceTree = "<group>"; };
 		2436D2DC1E8CBB5A000EE3C2 /* ONESBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONESBaseModel.h; sourceTree = "<group>"; };
 		2436D2DD1E8CBB5A000EE3C2 /* ONESBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONESBaseModel.m; sourceTree = "<group>"; };
@@ -372,6 +377,9 @@
 		24D957A91E86812A0052AA1C /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				241A80971E96481C0010ECDF /* VideoTableViewCell.h */,
+				241A80981E96481C0010ECDF /* VideoTableViewCell.m */,
+				241A80991E96481C0010ECDF /* VideoTableViewCell.xib */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -531,6 +539,7 @@
 				24C663361E812472001BD26E /* LaunchScreen.storyboard in Resources */,
 				24C663331E812472001BD26E /* Assets.xcassets in Resources */,
 				24C663311E812472001BD26E /* Main.storyboard in Resources */,
+				241A809B1E96481C0010ECDF /* VideoTableViewCell.xib in Resources */,
 				24C47F3A1E8A091E00DD51D4 /* WeChatTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,6 +614,7 @@
 				24C7A2981E890B1C00D11B58 /* SlumpBar.m in Sources */,
 				24C74B821E8152EB0003D56B /* XPResponseModel.m in Sources */,
 				24C47F3D1E8A1C4A00DD51D4 /* WeChatTableViewController.m in Sources */,
+				241A809A1E96481C0010ECDF /* VideoTableViewCell.m in Sources */,
 				24C5690B1E8CEB5100DA49FB /* wechatShareModel.m in Sources */,
 				24C47F391E8A091E00DD51D4 /* WeChatTableViewCell.m in Sources */,
 				24C2B9BC1E8BE36C003FE13B /* GloablTransitionAnimation.m in Sources */,

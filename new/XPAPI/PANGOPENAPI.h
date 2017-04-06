@@ -38,4 +38,18 @@
 
 #define JSSJ_SERVER_URL                     @"http://api.jisuapi.com/"
 #define JSSJ_WECHATESSAY                    @"weixinarticle/get"
+
+/*
+ 
+ *********************************************************************************
+ *                                                                                *
+ * 网易 客户端服务器接口                                                             *
+ * 访问时候不需要参数，通过地址判断当前数据                                               *
+ *                                                                                *
+ *********************************************************************************
+ 
+ */
+#define WY_SERVER_URL                     @"http://c.m.163.com/"
+#define WY_VIDEO_HOME                     @"nc/video/home/%@-10.html"
+
 #endif /* PANGOPENAPI_h */

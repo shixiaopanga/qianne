@@ -20,7 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *essayTime;
 @property (weak, nonatomic) IBOutlet UIButton *likeCount;
 @property (weak, nonatomic) IBOutlet UIButton *readCount;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentImageHeight;
+@property (weak, nonatomic) IBOutlet UIButton *playBtn;
+@property (weak, nonatomic) NSIndexPath *indexPath;
 
 
 @end
@@ -38,7 +39,14 @@
 
     // Configure the view for the selected state
 }
-
+- (void)updataForVideoModel:(id)model atIndexPath:(NSIndexPath *)indexPath {
+    _indexPath = indexPath;
+}
+- (IBAction)palyClick:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(wechatTableViewCell:didClickPlayBtnAtIndexPath:)]) {
+        [self.delegate wechatTableViewCell:self didClickPlayBtnAtIndexPath:_indexPath];
+    }
+}
 - (void)updataForEssayModel:(ONESEssayModel *)model reloadCompleted:(void(^)())completed{
     _writerName.text = [NSString stringWithFormat:@"ONE · %@",model.author];
 //    UIImage *img = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:model.pic];
@@ -80,6 +88,7 @@
         }
     }];
 }
+
 
 - (NSString *) compareCurrentTime:(NSString *)str
 {

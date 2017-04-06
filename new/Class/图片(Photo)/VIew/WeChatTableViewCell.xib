@@ -38,7 +38,7 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dRX-EV-yVL">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dRX-EV-yVL">
                         <rect key="frame" x="16" y="44" width="343" height="193"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -46,7 +46,7 @@
                         </constraints>
                     </imageView>
                     <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年3月28日，广州出租屋内开发。是的亲这是测试两行的数据" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPC-IW-eI5">
-                        <rect key="frame" x="16" y="245" width="343" height="66"/>
+                        <rect key="frame" x="16" y="245" width="343" height="65"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="w8N-gQ-7gg"/>
@@ -56,7 +56,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3月28日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Tz-aG-C60">
-                        <rect key="frame" x="16" y="396" width="54" height="20"/>
+                        <rect key="frame" x="16" y="395" width="54" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="wMN-0e-Osq"/>
                         </constraints>
@@ -65,7 +65,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwa-o0-LcU">
-                        <rect key="frame" x="284" y="396" width="20" height="20"/>
+                        <rect key="frame" x="284" y="395" width="20" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -74,7 +74,7 @@
                         </state>
                     </button>
                     <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行最多显示三行" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MF2-ax-CqO">
-                        <rect key="frame" x="16" y="316" width="343" height="70"/>
+                        <rect key="frame" x="16" y="315" width="343" height="70"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="ADg-0U-5l5"/>
@@ -84,14 +84,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZC-bI-xhY">
-                        <rect key="frame" x="0.0" y="426" width="375" height="5"/>
+                        <rect key="frame" x="0.0" y="425" width="375" height="5"/>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="5" id="ULG-AX-v2T"/>
                         </constraints>
                     </view>
                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVe-F4-Hwl">
-                        <rect key="frame" x="304" y="396" width="55" height="20"/>
+                        <rect key="frame" x="304" y="395" width="55" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="55" id="mVo-Di-85z"/>
@@ -103,12 +103,21 @@
                             <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVf-f2-LHc">
+                        <rect key="frame" x="162.5" y="115" width="50" height="50"/>
+                        <state key="normal" backgroundImage="video_play"/>
+                        <connections>
+                            <action selector="palyClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="95W-xH-sum"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
+                    <constraint firstItem="xVf-f2-LHc" firstAttribute="centerX" secondItem="dRX-EV-yVL" secondAttribute="centerX" id="0F3-Ir-ijV"/>
                     <constraint firstItem="dRX-EV-yVL" firstAttribute="top" secondItem="KyD-Cw-24O" secondAttribute="bottom" constant="8" id="0ad-3a-kkx"/>
                     <constraint firstItem="DZC-bI-xhY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="33n-iJ-cck"/>
                     <constraint firstItem="CPC-IW-eI5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="3mz-iY-l8u"/>
+                    <constraint firstItem="xVf-f2-LHc" firstAttribute="centerY" secondItem="dRX-EV-yVL" secondAttribute="centerY" id="6aC-an-Ryh"/>
                     <constraint firstItem="KyD-Cw-24O" firstAttribute="top" secondItem="KXR-mn-IYq" secondAttribute="top" id="6sB-Nl-qgO"/>
                     <constraint firstItem="0Tz-aG-C60" firstAttribute="top" secondItem="MF2-ax-CqO" secondAttribute="bottom" constant="10" id="7AR-Os-9su"/>
                     <constraint firstAttribute="trailingMargin" secondItem="MF2-ax-CqO" secondAttribute="trailing" constant="8" id="8JV-dT-p9r"/>
@@ -138,6 +147,7 @@
                 <outlet property="contentTitle" destination="CPC-IW-eI5" id="TAj-tk-Oda"/>
                 <outlet property="essayTime" destination="0Tz-aG-C60" id="rOw-Gn-Etq"/>
                 <outlet property="likeCount" destination="BVe-F4-Hwl" id="TGT-xN-v6w"/>
+                <outlet property="playBtn" destination="xVf-f2-LHc" id="QX9-ak-0Bs"/>
                 <outlet property="readCount" destination="uwa-o0-LcU" id="jC5-3G-FTB"/>
                 <outlet property="writerIcon" destination="KXR-mn-IYq" id="tVu-Ny-H0z"/>
                 <outlet property="writerName" destination="KyD-Cw-24O" id="avH-UQ-Ik8"/>
@@ -147,6 +157,7 @@
     </objects>
     <resources>
         <image name="icon" width="575" height="576"/>
+        <image name="video_play" width="50" height="50"/>
         <image name="weChat_like_select" width="15" height="15"/>
         <image name="weChat_share" width="20" height="20"/>
     </resources>

@@ -41,4 +41,13 @@ typedef void(^ONESApiCompletion)(BOOL fromCache, ONESBaseModel* onesModel);
  */
 //极速数据获取微信精选文章
 + (void)getWeChatEssayWithParameters:(id)parameters needCache:(BOOL)needCache succeed:(XPApiCompletionHandler)succeed fail:(void(^)(NSError *error))fail;
+
+/*
+ *********************************************************************************
+ *                                                                                *
+ * 网易新闻 具体接口的声名                                                             *
+ *                                                                                *
+ *********************************************************************************
+ */
+
 @end

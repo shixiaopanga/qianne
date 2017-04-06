@@ -21,7 +21,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"文章鉴赏";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"navi_back"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonClick:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"navi_cancel"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonClick:)];
     _contentView = [[UIWebView alloc]initWithFrame: CGRectMake(0, 0, UI_SCREEN_WIDTH, UI_SCREEN_HEIGHT)];
     _contentView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_contentView];

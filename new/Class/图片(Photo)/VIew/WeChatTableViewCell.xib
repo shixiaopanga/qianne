@@ -103,8 +103,8 @@
                             <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVf-f2-LHc">
-                        <rect key="frame" x="162.5" y="115" width="50" height="50"/>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVf-f2-LHc">
+                        <rect key="frame" x="163" y="115" width="50" height="50"/>
                         <state key="normal" backgroundImage="video_play"/>
                         <connections>
                             <action selector="palyClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="95W-xH-sum"/>
